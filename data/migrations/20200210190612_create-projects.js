@@ -12,6 +12,7 @@ exports.up = function(knex) {
                  tbl.string('description').notNullable();
                  tbl.string('notes');
                  tbl.boolean('completed').notNullable().defaultTo(false);
+                 tbl.integer('project_id').unsigned().notNullable().references('projects.id').onDelete('CASCADE').onUpdate('CASCADE');
              })
              .createTable('resources', tbl => {
                 tbl.increments();
