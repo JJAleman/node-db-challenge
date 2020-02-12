@@ -9,10 +9,7 @@ function findById(id){
 }
 
 function add(projectData) {
-    db('projects').insert(projectData)
-    .then(ids => {
-        return findById( ids[0]);
-    });
+   return db('projects').insert(projectData);
 }
 
 module.exports = {
