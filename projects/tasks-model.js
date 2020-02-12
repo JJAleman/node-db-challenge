@@ -11,19 +11,18 @@ module.exports = {
 //   return db('tasks');
 // }
 
-function find(id) {
+function find() {
   return db("tasks as t")
     .join("projects as p", "t.project_id", "p.id")
     .select(
       "t.id as taskId",
-      "t.description",
+      "t.description as TaskDescription",
       "t.notes",
       "t.completed",
       "t.project_id",
-      "p.name",
-      "p.description"
-    )
-    .where('projects.id', id);
+      "p.name as ProjectName",
+      "p.description as ProjectDescription"
+    );
 }
 // ---------------------GET by ID --------------------------
 
@@ -38,8 +37,8 @@ function findTasks(id) {
       "t.project_id",
       "p.name",
       "p.description"
-    );
-  // .where({project_id: id});
+    )
+  .where({project_id: id});
 }
 
 // ---------------------------POST Request-------------------
