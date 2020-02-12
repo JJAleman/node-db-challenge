@@ -9,10 +9,7 @@ function findById(id){
 }
 
 function add(resources) {
-    db('resources').insert(resources)
-    .then(ids => {
-        return findById( ids[0]);
-    });
+  return db('resources').insert(resources);
 }
 
 module.exports = {
